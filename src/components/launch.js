@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link as RouterLink } from "react-router-dom";
 import { format as timeAgo } from "timeago.js";
-import { Watch, MapPin, Navigation, Layers } from "react-feather";
+import { Watch, MapPin, Navigation, Layers, Star } from "react-feather";
 import {
     Flex,
     Heading,
@@ -21,6 +21,12 @@ import {
     StatGroup,
     Tooltip,
 } from "@chakra-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { selectFavorites } from "../redux/selectors/favorites.selector";
+import {
+    addToFavoriteLaunches,
+    removeFromFavoriteLaunches,
+} from "../redux/actions/favorite.actions";
 
 import { useSpaceX } from "../utils/use-space-x";
 import { formatDateTimeWithTimeZone } from "../utils/format-date";
@@ -64,6 +70,20 @@ export default function Launch() {
 }
 
 function Header({ launch }) {
+    const favorites = useSelector(selectFavorites);
+    const dispatch = useDispatch();
+    const isInFavoritesLaunch = favorites.favoriteLaunches.find(
+        (item) => item.flight_number === launch.flight_number
+    );
+
+    const handleFavoriteLaunch = (launch) => {
+        if (!isInFavoritesLaunch) {
+            dispatch(addToFavoriteLaunches(launch));
+        } else {
+            dispatch(removeFromFavoriteLaunches(launch));
+        }
+    };
+
     return (
         <Flex
             bgImage={`url(${launch.links.flickr_images[0]})`}
@@ -97,6 +117,13 @@ function Header({ launch }) {
                 {launch.mission_name}
             </Heading>
             <Stack isInline spacing="3">
+                <Badge variantColor="orange">
+                    <Star
+                        width="5em"
+                        color={isInFavoritesLaunch ? "orange" : "black"}
+                        onClick={() => handleFavoriteLaunch(launch)}
+                    />
+                </Badge>
                 <Badge variantColor="purple" fontSize={["xs", "md"]}>
                     #{launch.flight_number}
                 </Badge>
