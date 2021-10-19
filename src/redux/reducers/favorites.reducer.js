@@ -28,15 +28,14 @@ const favoritesReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 favoriteLaunchPads: [
                     ...state.favoriteLaunchPads,
-                    ...action.payload,
+                    { ...action.payload },
                 ],
             };
         case actionTypes.REMOVEFROMFAVORITELAUNCHPADS:
             return {
                 ...state,
                 favoriteLaunchPads: state.favoriteLaunchPads.filter(
-                    (item) =>
-                        item.flight_number !== action.payload.flight_number
+                    (item) => item.id !== action.payload.id
                 ),
             };
         default:

@@ -92,10 +92,12 @@ export function LaunchItem({ launch }) {
 
             <Box p="6">
                 <Flex align="center" justify="flex-end">
-                    <Star
-                        width="3em"
-                        color={isInFavoritesLaunch ? "orange" : "black"}
-                    />
+                    <Badge px="2" variantColor="yellow">
+                        <Star
+                            width="3em"
+                            color={isInFavoritesLaunch ? "orange" : "black"}
+                        />
+                    </Badge>
                 </Flex>
                 <Box d="flex" alignItems="baseline">
                     {launch.launch_success ? (

@@ -16,14 +16,14 @@ export const removeFromFavoriteLaunches = (item) => {
 
 export const addToFavoriteLaunchPads = (item) => {
     return {
-        type: actionTypes.ADDTOFAVORITELAUNCHES,
+        type: actionTypes.ADDTOFAVORITELAUNCHPADS,
         payload: item,
     };
 };
 
 export const removeFromFavoriteLaunchPads = (item) => {
     return {
-        type: actionTypes.REMOVEFROMFAVORITELAUNCHES,
+        type: actionTypes.REMOVEFROMFAVORITELAUNCHPADS,
         payload: item,
     };
 };

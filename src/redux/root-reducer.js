@@ -7,7 +7,7 @@ import favoritesReducer from "./reducers/favorites.reducer";
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: [],
+    whitelist: ["favorites"],
 };
 
 const rootReducer = combineReducers({
