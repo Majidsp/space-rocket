@@ -76,7 +76,7 @@ function SlideInDrawer() {
             <Box
                 as={Star}
                 width="6em"
-                color="white"
+                color="orange"
                 ref={menuRef}
                 onClick={onOpen}
             />

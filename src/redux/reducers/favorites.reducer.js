@@ -12,7 +12,7 @@ const favoritesReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 favoriteLaunches: [
                     ...state.favoriteLaunches,
-                    ...action.payload,
+                    { ...action.payload },
                 ],
             };
         case actionTypes.REMOVEFROMFAVORITELAUNCHES:
