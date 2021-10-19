@@ -19,13 +19,11 @@ import {
     Stack,
     AspectRatioBox,
     StatGroup,
+    Tooltip,
 } from "@chakra-ui/core";
 
 import { useSpaceX } from "../utils/use-space-x";
-import {
-    formatDateTime,
-    formatDateTimeWithTimeZone,
-} from "../utils/format-date";
+import { formatDateTimeWithTimeZone } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 
@@ -132,7 +130,17 @@ function TimeAndLocation({ launch }) {
                     </Box>
                 </StatLabel>
                 <StatNumber fontSize={["md", "xl"]}>
-                    {formatDateTimeWithTimeZone(launch.launch_date_local, true)}
+                    <Tooltip
+                        label={formatDateTimeWithTimeZone(
+                            launch.launch_date_local,
+                            false
+                        )}
+                    >
+                        {formatDateTimeWithTimeZone(
+                            launch.launch_date_local,
+                            true
+                        )}
+                    </Tooltip>
                 </StatNumber>
                 <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
             </Stat>
