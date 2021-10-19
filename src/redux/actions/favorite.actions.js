@@ -1,15 +1,29 @@
 import * as actionTypes from "./actionTypes";
 
-export const addToFavorites = (item) => {
+export const addToFavoriteLaunches = (item) => {
     return {
-        type: actionTypes.ADDTOFAVORITE,
+        type: actionTypes.ADDTOFAVORITELAUNCHES,
         payload: item,
     };
 };
 
-export const removeFromFavorites = (item) => {
+export const removeFromFavoriteLaunches = (item) => {
     return {
-        type: actionTypes.REMOVEFROMFAVORITE,
+        type: actionTypes.REMOVEFROMFAVORITELAUNCHES,
+        payload: item,
+    };
+};
+
+export const addToFavoriteLaunchPads = (item) => {
+    return {
+        type: actionTypes.ADDTOFAVORITELAUNCHES,
+        payload: item,
+    };
+};
+
+export const removeFromFavoriteLaunchPads = (item) => {
+    return {
+        type: actionTypes.REMOVEFROMFAVORITELAUNCHES,
         payload: item,
     };
 };
