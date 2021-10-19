@@ -1,19 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import {
-    Flex,
-    Text,
-    Box,
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    useDisclosure,
-} from "@chakra-ui/core";
-import { Star } from "react-feather";
+import { Flex, Text } from "@chakra-ui/core";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 
@@ -22,6 +9,7 @@ import Launch from "./launch";
 import Home from "./home";
 import LaunchPads from "./launch-pads";
 import LaunchPad from "./launch-pad";
+import SlideInDrawer from "./slideInDrawer";
 
 export default function App() {
     return (
@@ -64,38 +52,5 @@ function NavBar() {
             </Text>
             <SlideInDrawer />
         </Flex>
-    );
-}
-
-function SlideInDrawer() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const menuRef = React.useRef();
-
-    return (
-        <>
-            <Box
-                as={Star}
-                width="6em"
-                color="orange"
-                ref={menuRef}
-                onClick={onOpen}
-            />
-            <Drawer
-                isOpen={isOpen}
-                placement="right"
-                onClose={onClose}
-                finalFocusRef={menuRef}
-            >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader>Favorites</DrawerHeader>
-
-                    <DrawerBody></DrawerBody>
-
-                    <DrawerFooter></DrawerFooter>
-                </DrawerContent>
-            </Drawer>
-        </>
     );
 }
