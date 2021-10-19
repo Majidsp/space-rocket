@@ -1,8 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Flex, Text, Box } from "@chakra-ui/core";
-import { Star } from "react-feather";
 import {
+    Flex,
+    Text,
+    Box,
     Drawer,
     DrawerBody,
     DrawerFooter,
@@ -12,6 +13,9 @@ import {
     DrawerCloseButton,
     useDisclosure,
 } from "@chakra-ui/core";
+import { Star } from "react-feather";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 import Launches from "./launches";
 import Launch from "./launch";
@@ -21,19 +25,21 @@ import LaunchPad from "./launch-pad";
 
 export default function App() {
     return (
-        <div>
-            <NavBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/launches" element={<Launches />} />
-                <Route path="/launches/:launchId" element={<Launch />} />
-                <Route path="/launch-pads" element={<LaunchPads />} />
-                <Route
-                    path="/launch-pads/:launchPadId"
-                    element={<LaunchPad />}
-                />
-            </Routes>
-        </div>
+        <Provider store={store}>
+            <div>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/launches" element={<Launches />} />
+                    <Route path="/launches/:launchId" element={<Launch />} />
+                    <Route path="/launch-pads" element={<LaunchPads />} />
+                    <Route
+                        path="/launch-pads/:launchPadId"
+                        element={<LaunchPad />}
+                    />
+                </Routes>
+            </div>
+        </Provider>
     );
 }
 
