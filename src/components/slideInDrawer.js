@@ -33,6 +33,7 @@ export default function SlideInDrawer() {
     return (
         <>
             <Box
+                data-cy="navbar-fav-button"
                 as={Star}
                 width="6em"
                 color="orange"
@@ -111,6 +112,7 @@ function DrawerItemLaunch({ launch }) {
     };
     return (
         <Box
+            data-cy="drawer-launch-item-card"
             as={Link}
             to={`/launches/${launch.flight_number.toString()}`}
             boxShadow="md"
@@ -146,6 +148,7 @@ function DrawerItemLaunch({ launch }) {
             <Box p="6">
                 <Flex align="center" justify="flex-end">
                     <Box
+                        data-cy="drawer-launch-item-card-fav-button"
                         as={Button}
                         onClick={() => handleFavoriteLaunch(launch)}
                     >
