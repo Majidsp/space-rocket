@@ -117,7 +117,7 @@ function Header({ launch }) {
                 {launch.mission_name}
             </Heading>
             <Stack isInline spacing="3">
-                <Badge variantColor="orange">
+                <Badge variantColor="orange" data-cy="info-page-fav-button">
                     <Star
                         width="5em"
                         color={isInFavoritesLaunch ? "orange" : "black"}
